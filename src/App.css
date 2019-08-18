@@ -1,0 +1,27 @@
+.appBody{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 14px;
+  outline: none;
+}
+
+.inputSearch {
+  width: 80%;
+  font-size: 16px;
+  height: 26px;
+  line-height: 20px;
+  background: transparent;
+  border: 1px solid #BDC6CF;
+  color: #1E191E;
+  padding: 10px;
+}
+
+.component.compTextBox {
+  justify-content: center;
+  display: flex;
+  margin: 20px;
+}
