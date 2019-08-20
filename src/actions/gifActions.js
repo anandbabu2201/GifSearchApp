@@ -1,64 +1,74 @@
 import {
-  GET_CONTACTS,
-  DELETE_CONTACT,
-  ADD_CONTACT,
-  EDIT_CONTACT,
-  GET_CONTACT
+  GET_GIFS,
+  API_KEY,
+  GIF_URL,
+  GIF_TRE_URL,
+  GIF_RAN_URL,
+  DATA_CHANGE
 } from "./types";
 import axios from "axios";
 
-export const getContacts = () => async dispatch => {
-  const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+let params ={
+  api_key:API_KEY,
+  limit:25,
+  rating:"G",
+  offset:0,
+  lang:"en",
+  q:''
+}
+
+export const getGifs = (query) => async dispatch => {
+  const res = await axios.get(GIF_URL,{
+                    params: {
+                     ...params,q:query
+                      }});
 
   dispatch({
-    type: GET_CONTACTS,
+    type: GET_GIFS,
     payload: res.data
   });
 };
 
-export const deleteContact = id => async dispatch => {
-  try {
-    await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
-    dispatch({
-      type: DELETE_CONTACT,
-      payload: id
-    });
-  } catch (e) {
-    dispatch({ type: DELETE_CONTACT, payload: id });
-  }
-};
-
-export const getContact = id => async dispatch => {
-  const res = await axios.get(
-    `https://jsonplaceholder.typicode.com/users/${id}`
-  );
+export const getInfintyGifs = (query,limit) => async dispatch => {
+  const res = await axios.get(GIF_URL,{
+                    params: {
+                     ...params,q:query,limit
+                      }});
 
   dispatch({
-    type: GET_CONTACT,
+    type: GET_GIFS,
     payload: res.data
   });
 };
 
-export const addContact = contact => async dispatch => {
-  const res = await axios.post(
-    `https://jsonplaceholder.typicode.com/users/`,
-    contact
-  );
+
+export const getTrendingGif = () => async dispatch => {
+  const res = await axios.get(GIF_TRE_URL,{
+                    params: {
+                     ...params
+                      }});
+
   dispatch({
-    type: ADD_CONTACT,
+    type: GET_GIFS,
     payload: res.data
   });
 };
 
-export const editContact = contact => async dispatch => {
-  const res = await axios.put(
-    `https://jsonplaceholder.typicode.com/users/${contact.id}`,
-    contact
-  );
-  console.log("anand", res.data);
+export const getRandomGif = (randomTag) => async dispatch => {
+  const res = await axios.get(GIF_RAN_URL,{
+                    params: {
+                     ...params,tag:randomTag
+                      }});
 
   dispatch({
-    type: EDIT_CONTACT,
+    type: GET_GIFS,
     payload: res.data
   });
 };
+
+export const getDataChangeEvent=(path, data)=>dispatch=> {
+  dispatch ({
+    type: DATA_CHANGE,
+    payload:{path,data}
+  })
+}

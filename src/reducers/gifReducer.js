@@ -1,9 +1,6 @@
 import {
-  GET_CONTACTS,
-  DELETE_CONTACT,
-  ADD_CONTACT,
-  EDIT_CONTACT,
-  GET_CONTACT
+ GET_GIFS,
+ DATA_CHANGE
 } from "../actions/types";
 const initialState = {
   gifData: []
@@ -11,35 +8,25 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_CONTACTS:
+    case GET_GIFS:
       return {
         ...state,
-        contacts: action.payload
+        gifData: action.payload
       };
-    case GET_CONTACT:
-      return {
-        ...state,
-        contact: action.payload
-      };
-    case DELETE_CONTACT:
-      return {
-        ...state,
-        contacts: state.contacts.filter(e => e.id !== action.payload)
-      };
-    case ADD_CONTACT:
-      return {
-        ...state,
-        contacts: [action.payload, ...state.contacts]
-      };
-    case EDIT_CONTACT:
-      return {
-        ...state,
-        contacts: state.contacts.map(
-          e => (e.id === action.payload.id ? (e = action.payload) : e)
-        )
-      };
+
+      case DATA_CHANGE :{
+        let {path,data}=action.payload;
+        let { pathParams } = state;
+        path=path.split(".")
+        if(path.length>1)
+          pathParams[path[0]][path[1]]=data;
+        else
+         pathParams[path]=data;
+        return  {...state,pathParams:pathParams}
+    }
 
     default:
       return state;
   }
+
 }

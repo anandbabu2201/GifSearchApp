@@ -1,3 +1,4 @@
+
 .appBody{
   display: flex;
   flex-direction: column;
@@ -7,10 +8,11 @@
   overflow: hidden;
   font-size: 14px;
   outline: none;
+  align-items: center;
 }
 
 .inputSearch {
-  width: 80%;
+  width: 100%;
   font-size: 16px;
   height: 26px;
   line-height: 20px;
@@ -18,10 +20,179 @@
   border: 1px solid #BDC6CF;
   color: #1E191E;
   padding: 10px;
+  box-shadow: 1px 2px 3px 3px rgba(229, 234, 233, 1);
 }
 
-.component.compTextBox {
+.component {
+  justify-content: center;
+  margin: 20px;
+  align-items: center;
+}
+.component * {
+  padding: 10px
+}
+.searchBox {
+  display: flex;
+  flex :5
+}
+.actionButtons {
+  display: flex;
+  flex: 2;
+}
+
+.actionButtons .button {
+  margin: 0px 10px 0px 0px;
+}
+
+.eachGif {
+  height: 250px;
+  width: 250px;
+  padding: 10px;
+}
+
+.gifList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 800px;
+  overflow-y: scroll;
+}
+
+.gifList .eachBlock {
   justify-content: center;
   display: flex;
-  margin: 20px;
+}
+
+.button {
+  outline: none;
+    height: 30px;
+    padding: 0px 30px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    outline-color: gray;
+    background: #49A99C;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading {
+  padding-left: 30px
+}
+
+/* smartphones, iPhone, portrait 480x320 phones */
+@media (min-width:320px) {
+  .mobile-6{ width:16.66% }
+  .mobile-5{ width:20% }
+  .mobile-4{ width:25% }
+  .mobile-3{ width:33.33% }
+  .mobile-2{ width:50% }
+  .mobile-1{ width:100% }
+
+  .appBody > *{
+    width: 100%;
+  }
+
+  .component {
+    display: block;
+  }
+
+}
+
+/* portrait , mobile-landscape @ 600 or @ 640 wide. */
+@media (min-width:481px) {
+
+  .mobile-landscape-5{ width:20% }
+  .mobile-landscape-4{ width:25% }
+  .mobile-landscape-3{ width:33.33% }
+  .mobile-landscape-2{ width:50% }
+  .mobile-landscape-1{ width:100% }
+
+  .appBody  > *{
+    width: 100%;
+  }
+  .component {
+    display: block;
+  }
+
+}
+
+/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+@media (min-width:641px) {
+  .tablet-5{ width:20% }
+  .tablet-4{ width:25% }
+  .tablet-3{ width:33.33% }
+  .tablet-2{ width:50% }
+  .tablet-1{ width:100% }
+
+  .appBody > *{
+    width: 100%;
+  }
+  .component {
+    display: block;
+  }
+
+ }
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width:961px) {
+
+  .tablet-landscape-5{ width:20% }
+  .tablet-landscape-4{ width:25% }
+  .tablet-landscape-3{ width:33.33% }
+  .tablet-landscape-2{ width:50% }
+  .tablet-landscape-1{ width:100% }
+
+  .appBody > *{
+    width: 80%;
+  }
+
+  .component {
+    display: flex;
+  }
+
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (min-width:1025px) {
+  .desktop-6{ width:16.66% }
+  .desktop-5{ width:20% }
+  .desktop-4{ width:25% }
+  .desktop-3{ width:33.33% }
+  .desktop-2{ width:50% }
+  .desktop-1{ width:100% }
+
+  .appBody > *{
+    width: 80%;
+  }
+
+  .component {
+    display: flex;
+  }
+
+ }
+
+/* hi-res laptops and desktops */
+@media (min-width:1281px) {
+
+  .wideScreen-6{ width:16.66% }
+  .wideScreen-5{ width:20% }
+  .wideScreen-4{ width:25% }
+  .wideScreen-3{ width:33.33% }
+  .wideScreen-2{ width:50% }
+  .wideScreen-1{ width:100% }
+
+  .appBody > *{
+    width: 80%;
+  }
+
+  .component {
+    display: flex;
+  }
+
+
 }
