@@ -65,19 +65,17 @@
 
 .button {
   outline: none;
-    height: 30px;
-    padding: 0px 30px;
+    height: 35px;
     border-radius: 4px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     cursor: pointer;
-    outline-color: gray;
     background: #49A99C;
     color: #FFFFFF;
-    text-transform: uppercase;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 1px 2px 3px 3px #49a99c;
 }
 
 .heading {

@@ -1,31 +1,43 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getGifs,getRandomGif,getTrendingGif } from "../actions/gifActions";
-
+import { getGifs,getRandomGif,getTrendingGif,getDataChangeEvent } from "../actions/gifActions";
 
 class Searchbar extends Component {
 
   state = {
-    filterdBy:'',
+    filterBy:'',
     searchBy:''
   }
 
   callGifData=(e)=>{
     this.setState({searchBy:e.target.value})
     this.props.getGifs(e.target.value)
+    if(this.state.filterBy) this.setState({filterBy:''})
+    this.props.getDataChangeEvent({
+      filterBy:'',
+      searchBy:e.target.value
+    });
   }
 
   getTrendingGif= _=>{
-    this.setState({filterdBy:'Trending'})
+    this.setState({filterBy:'Trending'})
     if(this.state.searchBy)
      this.setState({searchBy:''})
     this.props.getTrendingGif();
+    this.props.getDataChangeEvent({
+      filterBy:'Trending',
+      searchBy:''
+    });
   }
 
   getRandomGif = _ =>{
-    this.setState({filterdBy:'Random'})
+    this.setState({filterBy:'Random'})
     this.props.getRandomGif(this.state.searchBy);
+    this.props.getDataChangeEvent({
+      filterBy:'Random',
+      searchBy:this.state.searchBy
+    });
   }
 
 
@@ -42,7 +54,7 @@ class Searchbar extends Component {
           <button className="button" onClick={this.getTrendingGif} name="trendingButton">Trending Gifs</button>
             </div>
           </div>
-          {this.state.searchBy || this.state.filterdBy ? <h2 className="heading">showing "{this.state.searchBy || this.state.filterdBy}" Gif(s)</h2>:
+          {this.state.searchBy || this.state.filterBy ? <h2 className="heading">showing "{this.state.searchBy || this.state.filterBy}" Gif(s)</h2>:
             ''}
           </React.Fragment>
     );
@@ -52,10 +64,11 @@ class Searchbar extends Component {
 Searchbar.propTypes = {
   getGifs: PropTypes.func.isRequired,
   getTrendingGif: PropTypes.func.isRequired,
-  getRandomGif: PropTypes.func.isRequired
+  getRandomGif: PropTypes.func.isRequired,
+  getDataChangeEvent:PropTypes.func.isRequired
 };
 
 
 export default connect(null,
-  { getGifs,getTrendingGif,getRandomGif }
+  { getGifs,getTrendingGif,getRandomGif,getDataChangeEvent }
 )(Searchbar);

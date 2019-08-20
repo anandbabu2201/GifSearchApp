@@ -10,26 +10,13 @@ import axios from "axios";
 
 let params ={
   api_key:API_KEY,
-  limit:25,
   rating:"G",
   offset:0,
   lang:"en",
   q:''
 }
 
-export const getGifs = (query) => async dispatch => {
-  const res = await axios.get(GIF_URL,{
-                    params: {
-                     ...params,q:query
-                      }});
-
-  dispatch({
-    type: GET_GIFS,
-    payload: res.data
-  });
-};
-
-export const getInfintyGifs = (query,limit) => async dispatch => {
+export const getGifs = (query,limit=25) => async dispatch => {
   const res = await axios.get(GIF_URL,{
                     params: {
                      ...params,q:query,limit
@@ -41,13 +28,11 @@ export const getInfintyGifs = (query,limit) => async dispatch => {
   });
 };
 
-
-export const getTrendingGif = () => async dispatch => {
+export const getTrendingGif = (limit=25) => async dispatch => {
   const res = await axios.get(GIF_TRE_URL,{
                     params: {
-                     ...params
+                     ...params,limit
                       }});
-
   dispatch({
     type: GET_GIFS,
     payload: res.data
@@ -59,16 +44,15 @@ export const getRandomGif = (randomTag) => async dispatch => {
                     params: {
                      ...params,tag:randomTag
                       }});
-
   dispatch({
     type: GET_GIFS,
     payload: res.data
   });
 };
 
-export const getDataChangeEvent=(path, data)=>dispatch=> {
+export const getDataChangeEvent=(params)=>dispatch=> {
   dispatch ({
     type: DATA_CHANGE,
-    payload:{path,data}
+    payload:params
   })
 }

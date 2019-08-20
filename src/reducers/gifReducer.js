@@ -15,14 +15,7 @@ export default function(state = initialState, action) {
       };
 
       case DATA_CHANGE :{
-        let {path,data}=action.payload;
-        let { pathParams } = state;
-        path=path.split(".")
-        if(path.length>1)
-          pathParams[path[0]][path[1]]=data;
-        else
-         pathParams[path]=data;
-        return  {...state,pathParams:pathParams}
+        return  {...state,params:action.payload}
     }
 
     default:
