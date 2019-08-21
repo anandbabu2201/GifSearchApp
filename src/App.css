@@ -61,6 +61,34 @@
 .gifList .eachBlock {
   justify-content: center;
   display: flex;
+  position: relative;
+  height: 270px;
+}
+
+.eachBlock .btn {
+  border: none;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.btn:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 12px;
+  left: 22px;
+  margin: 0 auto;
+  border-style: solid;
+  border-width: 17px 0px 17px 25px;
+  border-color: transparent #ad9c9c00 transparent rgb(29, 167, 122);
 }
 
 .button {
@@ -81,6 +109,30 @@
 .heading {
   padding-left: 30px
 }
+
+/* play pause css */
+
+/* .like {
+  display: block;
+  width: 110px;
+  height: 110px;
+  margin:0 auto;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/349115/like_animation.png) 0 0 no-repeat;
+  background-size: 3000%;
+  animation: like-gif steps(28) 1s infinite both;
+} */
+.pause {
+  animation-play-state: paused;
+}
+@keyframes like-gif {
+0% {
+  background-position: 0%;
+}
+100% {
+  background-position: 100%;
+}
+}
+
 
 /* smartphones, iPhone, portrait 480x320 phones */
 @media (min-width:320px) {
