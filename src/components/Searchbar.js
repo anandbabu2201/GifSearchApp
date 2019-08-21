@@ -9,15 +9,15 @@ class Searchbar extends Component {
     filterBy:'',
     searchBy:''
   }
+  static TIMEOUT = null;
 
   callGifData=(e)=>{
-    this.setState({searchBy:e.target.value})
-    this.props.getGifs(e.target.value)
+    let x = e.target.value;
+    this.setState({searchBy:x})
     if(this.state.filterBy) this.setState({filterBy:''})
-    this.props.getDataChangeEvent({
-      filterBy:'',
-      searchBy:e.target.value
-    });
+    this.props.getDataChangeEvent({filterBy:'',searchBy:x});
+    clearTimeout(Searchbar.TIMEOUT);
+    Searchbar.TIMEOUT= setTimeout(this.props.getGifs,500,x);
   }
 
   getTrendingGif= _=>{
