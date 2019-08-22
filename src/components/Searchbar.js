@@ -46,7 +46,7 @@ class Searchbar extends Component {
       <React.Fragment>
        <div className="component " >
          <div className="searchBox">
-           <input name="gifSearch" className="inputSearch" type="text" placeholder="search GIF"
+           <input aria-label="searchbox" name="gifSearch" className="inputSearch" type="text" placeholder="search GIF"
            onChange={this.callGifData} value={this.state.searchBy} />
           </div>
            <div className="actionButtons">
