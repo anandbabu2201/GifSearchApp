@@ -22,6 +22,7 @@ class Searchbar extends Component {
 
   getTrendingGif= _=>{
     this.setState({filterBy:'Trending'})
+    console.log('anand',this.state.searchBy)
     if(this.state.searchBy)
      this.setState({searchBy:''})
     this.props.getTrendingGif();

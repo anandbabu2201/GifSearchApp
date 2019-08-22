@@ -8,8 +8,7 @@ class GifList extends Component {
 
   handleMore = () =>{
     let { total_count, count }= this.props.pageSize || {};
-    let { searchBy , filterBy }= this.props.params
-    if(filterBy.toUpperCase() === 'RANDOM') return;
+    let { searchBy }= this.props.params
     if(count>=total_count) return;
     if(searchBy)
     this.props.getGifs(searchBy,count+25);
