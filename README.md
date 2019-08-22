@@ -20,7 +20,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Highlihts :
 
 1. I have implemented infinity scrolling for this app .
-2. Added debounce technique to stop multiple calls on search. while user typing the text i am not doing calls immediately i am waiting user to stop typing then doing API call.
+2. Added debounce technique to stop multiple calls on search. while user typing the text i am not doing calls immediately i am waiting until user stop typing then doing API call.
 3. It is responsive across all the devices .
 4. Finallly I have made this app as PWA .
 
