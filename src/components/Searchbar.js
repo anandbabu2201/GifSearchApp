@@ -22,7 +22,6 @@ class Searchbar extends Component {
 
   getTrendingGif= _=>{
     this.setState({filterBy:'Trending'})
-    console.log('anand',this.state.searchBy)
     if(this.state.searchBy)
      this.setState({searchBy:''})
     this.props.getTrendingGif();
@@ -55,7 +54,7 @@ class Searchbar extends Component {
           <button className="button" onClick={this.getTrendingGif} name="trendingButton">Trending Gifs</button>
             </div>
           </div>
-          {this.state.searchBy || this.state.filterBy ? <h2 className="heading">showing "{this.state.filterBy || this.state.searchBy}" Gif(s)</h2>:
+          {this.state.searchBy || this.state.filterBy ? <h2 className="heading">Showing "{this.state.filterBy || this.state.searchBy}" Gif(s)</h2>:
             ''}
           </React.Fragment>
     );
