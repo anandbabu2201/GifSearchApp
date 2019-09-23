@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 1. This app is developed using React & Redux
@@ -55,3 +56,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 App is ready to be deployed! on your own choice of environments.
 
+=======
+# GifSearchApp
+Search Gif's with infinity scrolling
+>>>>>>> 23ded3b06151a43d3e7fbe47184e484fb3505529
